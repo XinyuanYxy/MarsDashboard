@@ -14,7 +14,7 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 
 // your API calls
 
-app.get('/:rovername', async (req, res) => {
+app.get('/rover/:rovername', async (req, res) => {
 	try {
 		const rovername = req.params.rovername;
 		let image = await fetch(
