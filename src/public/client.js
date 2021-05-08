@@ -84,6 +84,7 @@ const ImageOfTheDay = (apod) => {
             <p>${apod.explanation}</p>
         `;
 	} else {
+		console.log(apod);
 		return `
             <img src="${apod.image.url}" height="350px" width="100%" />
             <p>${apod.image.explanation}</p>
