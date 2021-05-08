@@ -1,6 +1,6 @@
 let store = Immutable.Map({
 	user: { name: 'Student' },
-	apod: {},
+	apod: '',
 	rovers: ['Curiosity', 'Opportunity', 'Spirit'],
 });
 
@@ -8,8 +8,8 @@ let store = Immutable.Map({
 const root = document.getElementById('root');
 
 const updateStore = (store, newState) => {
-	store.merge(newState);
-	render(root, store);
+	let newone = store.merge(newState);
+	render(root, newone);
 };
 
 const render = async (root, state) => {
@@ -18,10 +18,12 @@ const render = async (root, state) => {
 
 // create content
 const App = (state) => {
+	// let { rovers, apod } = state;
+
 	return `
         <header></header>
         <main>
-            ${Greeting(store.get('user').name)}
+            ${Greeting(state.get('user').name)}
             <section>
                 <h3>Put things on the page!</h3>
                 <p>Here is an example section.</p>
@@ -33,7 +35,7 @@ const App = (state) => {
                     explanation are returned. These keywords could be used as auto-generated hashtags for twitter or instagram feeds;
                     but generally help with discoverability of relevant imagery.
                 </p>
-                ${ImageOfTheDay(store.get('apod'))}
+                ${ImageOfTheDay(state.get('apod'))}
             </section>
         </main>
         <footer></footer>
@@ -63,12 +65,14 @@ const Greeting = (name) => {
 // Example of a pure function that renders infomation requested from the backend
 const ImageOfTheDay = (apod) => {
 	// If image does not already exist, or it is not from today -- request it again
+
 	const today = new Date();
 	const photodate = new Date(apod.date);
-	console.log(photodate.getDate(), today.getDate());
 
 	console.log(photodate.getDate() === today.getDate());
+
 	if (!apod || apod.date === today.getDate()) {
+		console.log('now in the compare block');
 		getImageOfTheDay(store);
 	}
 
@@ -83,7 +87,6 @@ const ImageOfTheDay = (apod) => {
 		return `
             <img src="${apod.image.url}" height="350px" width="100%" />
             <p>${apod.image.explanation}</p>
-            <p> ${apod.image.date}
         `;
 	}
 };
@@ -92,8 +95,9 @@ const ImageOfTheDay = (apod) => {
 
 // Example API call
 const getImageOfTheDay = (state) => {
-	let { apod } = state;
+	// let { apod } = state;
+	console.log('in the getimage blcok');
 	fetch(`http://localhost:3000/apod`)
 		.then((res) => res.json())
-		.then((apod) => updateStore(store, { apod })); // shortcut for updateStore(store,{apod: apod})
+		.then((apod) => updateStore(store, { apod }));
 };
