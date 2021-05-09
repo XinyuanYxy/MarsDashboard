@@ -1,38 +1,83 @@
 /* -------------------  MOBILE  --------------------- */
 
 body {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial;
-  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: Arial;
+	min-height: 100vh;
+
+	background-image: url(https://i.pinimg.com/originals/eb/b8/23/ebb823101eb34c7a13599755d4fbcd01.jpg);
+	background-size: auto;
+	background-position: left;
 }
 
 header {
-  /* header styles */
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+		'Lucida Sans', Arial, sans-serif;
+	font-size: 30px;
+	color: aliceblue;
+
+	justify-content: center;
+	display: flex;
+	height: 40px;
+	background-color: rgba(226, 212, 212, 0.2);
+
+	/* header styles */
+}
+
+nav {
+	display: flex;
+	/* align-items: center; */
+	justify-content: center;
 }
 
 main {
-  flex: 1;
-  padding: 20px;
+	flex: 1;
+	padding: 20px;
 }
 
 footer {
-  /* footer styles */
+	/* footer styles */
 }
+
+.navbar {
+	display: flex;
+	justify-content: space-around;
+	width: 50%;
+}
+
+.navbar li {
+	list-style: none;
+}
+
+.navbar li:hover {
+	background-color: rgba(232, 104, 12, 0.5);
+	color: aliceblue;
+	cursor: pointer;
+}
+
+/* .menubar div {
+	display: flex;
+	width: 50px;
+	height: 3px;
+	margin-left: 100px;
+
+	background-color: aliceblue;
+} */
 
 /* -------------------  TABLET  --------------------- */
 @media (min-width: 768px) {
-  /* use mobile */
+	/* use mobile */
 }
 
 /* -------------------  DESKTOP  -------------------- */
 
 @media (min-width: 1224px) {
-  /* use mobile */
+	/* use mobile */
 }
 
 /* -------------------  LARGE SCREENS  -------------- */
 
 @media (min-width: 1824px) {
-  /* use mobile */
+	/* use mobile */
 }
