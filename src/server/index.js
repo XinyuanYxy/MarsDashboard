@@ -17,10 +17,11 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 app.get('/rover/:rovername', async (req, res) => {
 	try {
 		const rovername = req.params.rovername;
+		console.log(rovername);
 		let image = await fetch(
 			`https://api.nasa.gov/mars-photos/api/v1/rovers/${rovername}/latest_photos?api_key=${process.env.API_KEY}`
 		).then((res) => res.json());
-		res.send({ image });
+		res.send(image);
 	} catch (err) {
 		console.log('error:', err);
 	}
